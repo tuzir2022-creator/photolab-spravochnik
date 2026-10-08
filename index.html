@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Справочник PHOTO LAB</title>
+<meta name="description" content="Демонстрационный макет справочника регламентов для сотрудников сети детской фотографии.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b2231; --muted:#586174; --paper:#f3f5fa; --card:#ffffff; --line:#d9deea;
+    --brand:#1f4fd8; --brand-deep:#16358f; --ask:#8F7212;
+    --c-photo:#0e9fc4; --t-photo:#e1f4f9;
+    --c-print:#d02c6b; --t-print:#fbe5ed;
+    --c-sales:#d9a400; --t-sales:#fff3c9;
+    --c-senior:#2b3445; --t-senior:#e5e8ee;
+    --c-manager:#6a45c9; --t-manager:#ebe5f9;
+    --c-office:#2a9d5c; --t-office:#e0f3e8;
+    --head:"Golos Text",system-ui,sans-serif; --text:"PT Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--text)}
+  h1,h2,h3{font-family:var(--head);margin:0;line-height:1.15;letter-spacing:-.01em}
+  a{color:var(--brand-deep)}
+  :focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:4px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask{color:var(--ask);font-weight:700}
+
+  /* пропуск к содержимому */
+  .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:10}
+  .skip:focus{left:8px}
+
+  .demo{background:#1b2231;color:#dfe5f3;font-size:14px;line-height:1.4;padding:8px 16px;text-align:center}
+  header.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .top-in{max-width:1120px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;font:700 21px/1 var(--head);color:var(--ink);text-decoration:none;letter-spacing:.01em}
+  .logo svg{flex:none}
+  .search{flex:1;min-width:210px;position:relative}
+  .search input{width:100%;font:400 18px var(--text);padding:11px 14px 11px 44px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink)}
+  .search input:focus{border-color:var(--brand);background:#fff}
+  .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none}
+  .adm{font:600 14px var(--head);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--ink);cursor:pointer;min-height:44px}
+  .adm[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .adm.out{border-style:dashed;color:var(--muted)}
+
+  main:focus{outline:none}
+  .foot-tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .foot-tools a{font-size:15px}
+  .about h2{font-size:24px;margin:30px 0 10px}
+  .about table{border-collapse:collapse;width:100%;font-size:16px;background:#fff;border-radius:12px;overflow:hidden}
+  .about th,.about td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  .about th{background:#eef1f8;font-family:var(--head);font-size:15px}
+  .about ul{padding-left:22px}
+  @media(max-width:600px){.nav2{flex-direction:column}.nav2>div,.nav2 .btn{width:100%;text-align:center}.demo{font-size:13px;padding:6px 12px}.top-in{padding:10px 16px;gap:10px}.logo{font-size:19px}}
+  main{max-width:1120px;margin:0 auto;padding:28px 16px 56px}
+
+  /* главная */
+  .hero{max-width:720px;margin:6px 0 26px}
+  .hero h1{font-size:clamp(30px,5vw,44px);font-weight:700}
+  .hero p{margin:12px 0 0;font-size:19px;color:var(--muted);max-width:56ch}
+  .quick{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;align-items:center}
+  .quick span{font-size:15px;color:var(--muted)}
+  .chip{font:400 16px var(--text);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;color:var(--ink);min-height:40px}
+  .chip:hover{border-color:var(--brand)}
+  .roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+  @media(max-width:900px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.roles{grid-template-columns:1fr}}
+  .role{position:relative;display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px 20px 18px 26px;min-height:132px;overflow:hidden}
+  .role::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--rc)}
+  .role:hover{border-color:var(--rc);box-shadow:0 6px 18px rgba(27,34,49,.08)}
+  .role h2{font-size:24px}
+  .role p{margin:6px 0 0;color:var(--muted);font-size:16px;line-height:1.4}
+  .role .n{display:inline-block;margin-top:12px;font:600 14px var(--head);background:var(--rt);padding:4px 10px;border-radius:8px}
+  .note-home{margin-top:30px;max-width:70ch;font-size:16px;color:var(--muted)}
+
+  /* общие элементы страницы раздела */
+  .crumbs{font-size:15px;margin:0 0 14px;color:var(--muted)}
+  .crumbs a{color:var(--muted)}
+  .pill{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--head);background:var(--rt);padding:5px 12px 5px 10px;border-radius:999px;color:var(--ink)}
+  .pill i{width:10px;height:10px;border-radius:50%;background:var(--rc);display:block}
+  .page-h{font-size:clamp(28px,4.5vw,40px);margin:12px 0 8px}
+  .lead{font-size:20px;color:var(--muted);max-width:60ch;margin:0 0 24px}
+  .docs{display:grid;gap:12px;max-width:780px}
+  .doc{display:block;background:#fff;border:1.5px solid var(--line);border-left:8px solid var(--rc);border-radius:14px;padding:16px 20px;text-decoration:none;color:var(--ink)}
+  .doc:hover{box-shadow:0 6px 18px rgba(27,34,49,.08)}
+  .doc h3{font-size:22px}
+  .doc p{margin:4px 0 0;color:var(--muted);font-size:16.5px}
+
+  /* страница регламента */
+  .layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:start}
+  @media(max-width:860px){.layout{grid-template-columns:1fr;gap:6px}}
+  .toc{position:sticky;top:92px;font-size:16px}
+  .toc b{font:600 14px var(--head);color:var(--muted);display:block;margin-bottom:8px}
+  .toc a{display:block;padding:7px 0 7px 12px;border-left:3px solid var(--line);text-decoration:none;color:var(--ink)}
+  .toc a:hover{border-left-color:var(--rc)}
+  @media(max-width:860px){.toc{position:static;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.toc b{display:none}.toc a{border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;background:#fff}}
+  article{max-width:720px}
+  article h2{font-size:26px;margin:34px 0 12px;scroll-margin-top:96px}
+  article h2:first-of-type{margin-top:0}
+  .banner{background:#fff8dd;border:1.5px solid #e6d58a;border-radius:12px;padding:12px 16px;font-size:16px;margin:0 0 26px;line-height:1.45}
+  ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 62px;background:#fff;border:1.5px solid var(--line);border-radius:14px;margin-bottom:10px}
+  ol.steps li::before{content:counter(s);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:var(--rc);color:#fff;font:700 17px/34px var(--head);text-align:center}
+  .role-sales ol.steps li::before{color:var(--ink)}
+  .callout{background:var(--rt);border-left:6px solid var(--rc);border-radius:10px;padding:14px 18px;margin-top:6px}
+  .callout b{font-family:var(--head)}
+  .nav2{display:flex;justify-content:space-between;gap:12px;margin-top:36px;flex-wrap:wrap}
+  .btn{display:inline-block;font:600 16px var(--head);text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 18px;min-height:46px;cursor:pointer}
+  .btn:hover{border-color:var(--brand)}
+  .btn.pri{background:var(--brand);border-color:var(--brand);color:#fff}
+  mark{background:#ffe27a;color:inherit;padding:0 2px;border-radius:3px}
+
+  /* админ-режим (демо) */
+  .editbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;align-items:center}
+  .editor label{display:block;font:600 15px var(--head);margin:16px 0 6px}
+  .editor textarea{width:100%;font:400 17px/1.5 var(--text);border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;color:var(--ink);min-height:96px;resize:vertical}
+  .editor small{color:var(--muted);font-size:14px}
+
+  /* поиск */
+  .res{display:grid;gap:12px;max-width:780px}
+  .res .doc p{color:var(--ink);font-size:17px}
+  .empty{background:#fff;border:1.5px dashed var(--line);border-radius:14px;padding:22px;max-width:620px}
+
+  /* вход */
+  .gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,#16358f,#1f4fd8 60%,#3b78ff)}
+  .gate-card{background:#fff;border-radius:20px;padding:30px 28px;width:100%;max-width:440px;box-shadow:0 20px 50px rgba(10,20,60,.35)}
+  .gate-card h1{font-size:28px;margin:14px 0 8px}
+  .gate-card p{margin:0 0 18px;color:var(--muted);font-size:17px}
+  .gate-card label{font:600 15px var(--head);display:block;margin-bottom:6px}
+  .gate-card input{width:100%;font:400 19px var(--text);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;margin-bottom:14px}
+  .gate-card .btn{width:100%;text-align:center}
+  .gate-card .hint{font-size:14.5px;margin:14px 0 0;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:22px 16px 34px;text-align:center;color:var(--muted);font-size:14.5px}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#/" id="skip">К содержимому</a>
+<div id="app"></div>
+
+<script>
+/* ---------- данные ---------- */
+var ROLES = [
+  {id:'photo',  name:'Фотограф',      about:'Съёмка, работа с детьми и родителями, выдача электронных фото', c:'--c-photo',  t:'--t-photo'},
+  {id:'print',  name:'Печатник',      about:'Приём в печать, контроль отпечатков, брак',                      c:'--c-print',  t:'--t-print'},
+  {id:'sales',  name:'Продажник',     about:'Касса, оплата, сувенирная продукция',                             c:'--c-sales',  t:'--t-sales'},
+  {id:'senior', name:'Старший смены', about:'Открытие и закрытие смены, график, перерывы',                     c:'--c-senior', t:'--t-senior'},
+  {id:'manager',name:'Управляющий',   about:'Контроль качества, жалобы, работа точки',                         c:'--c-manager',t:'--t-manager'},
+  {id:'office', name:'Офис',          about:'Заказы из офиса, документы и отчёты',                             c:'--c-office', t:'--t-office'}
+];
+
+var DOCS = [
+ {id:'photo-prep', role:'photo', title:'Подготовка к съёмке',
+  lead:'Перед приходом семьи зал, свет и камера уже готовы.',
+  purpose:'Чтобы съёмка началась вовремя и семья не ждала, пока фотограф настраивает оборудование.',
+  steps:['Проверить зал: чисто, игрушки на местах, фон выбран.','Проверить камеру: батарея заряжена, на карте памяти есть место.','Включить свет и сделать пробный кадр.','Сверить время записи в расписании смены.'],
+  note:'Не начинать съёмку, пока семья не узнала, как пройдёт сеанс. Время подготовки: [[ask: из Корпоративной книги]].'},
+ {id:'photo-kids', role:'photo', title:'Работа с ребёнком и родителями',
+  lead:'Как познакомиться с ребёнком и договориться с родителями.',
+  purpose:'Спокойный ребёнок и понятные родители дают лучшие кадры и меньше пересъёмок.',
+  steps:['Поздороваться и познакомиться с ребёнком, не торопить.','Объяснить родителям, где им стоять и что можно подсказывать.','Сделать пробные кадры и показать их на экране камеры.','Если ребёнок устал, предложить паузу.'],
+  note:'Правила физического контакта с ребёнком: [[ask: из Корпоративной книги]].'},
+ {id:'photo-digital', role:'photo', title:'Передача электронных фото',
+  lead:'Выбор кадров и выдача электронных фото клиенту.',
+  purpose:'Клиент получает именно те файлы, за которые заплатил, а у точки остаётся запись о выдаче.',
+  steps:['Выбрать вместе с клиентом кадры для выдачи.','Скопировать выбранные файлы в папку заказа.','Передать электронные фото клиенту выбранным способом.','Отметить выдачу в журнале.'],
+  note:'Электронные фото не удалять, пока клиент не подтвердил, что получил всё. Срок хранения файлов: [[ask: из Корпоративной книги]].'},
+
+ {id:'print-intake', role:'print', title:'Приём заказа в печать',
+  lead:'Что проверить в заказе до запуска печати.',
+  purpose:'Ошибку в файле дешевле найти до печати, чем после.',
+  steps:['Сверить номер заказа, формат и количество.','Проверить файл: разрешение, обрезка по краям, цвет.','Поставить заказ в очередь печати.','Отметить в журнале, что заказ принят.'],
+  note:'Минимальное разрешение файла: [[ask: из Корпоративной книги]].'},
+ {id:'print-defect', role:'print', title:'Что делать при браке',
+  lead:'Порядок действий, если отпечаток вышел с дефектом.',
+  purpose:'Каждый брак записан и разобран, чтобы причина не повторялась.',
+  steps:['Остановить печать и сохранить файл заказа.','Показать отпечаток старшему смены.','Записать причину в журнал брака.','Перепечатать после решения старшего смены.'],
+  note:'Бракованный отпечаток не выбрасывать, пока он не записан в журнал.'},
+
+ {id:'sales-cash', role:'sales', title:'Касса и оплата',
+  lead:'Приём заказа и оплаты от клиента.',
+  purpose:'Клиент понимает, за что платит, а касса сходится в конце смены.',
+  steps:['Принять заказ и назвать клиенту итоговую сумму.','Принять оплату и выдать чек.','Записать заказ в журнал.','Назвать клиенту срок готовности.'],
+  note:'Способы оплаты и возврат: [[ask: из Корпоративной книги]].'},
+ {id:'sales-gifts', role:'sales', title:'Сувенирная продукция',
+  lead:'Как оформить заказ на кружки, магниты и другие сувениры.',
+  purpose:'Макет сувенира согласован с клиентом до запуска в производство.',
+  steps:['Показать клиенту образцы.','Уточнить, какое фото и какой текст нужны на изделии.','Показать макет и получить согласие клиента.','Передать заказ в производство и назвать срок.'],
+  note:'Сроки изготовления сувениров: [[ask: из Корпоративной книги]].'},
+
+ {id:'senior-shift', role:'senior', title:'Открытие и закрытие смены',
+  lead:'Что проверить в начале и в конце рабочего дня.',
+  purpose:'Точка открывается готовой, а смена закрывается без потерянных заказов и расхождений в кассе.',
+  steps:['Открытие: проверить зал, оборудование и кассу.','В течение смены следить за очередью заказов и журналом брака.','Закрытие: сверить кассу и убедиться, что все заказы выданы или переданы.','Передать смену следующему старшему и записать замечания.'],
+  note:'Чек-лист открытия и закрытия: [[ask: из Корпоративной книги]].'},
+ {id:'senior-breaks', role:'senior', title:'Перерывы и график',
+  lead:'Как составить перерывы так, чтобы точка работала без остановок.',
+  purpose:'У сотрудников есть время отдохнуть, а клиенты не стоят в очереди.',
+  steps:['Сверить график смены на день.','Расписать перерывы так, чтобы на точке всегда оставались фотограф и продажник.','Сообщить сотрудникам время перерыва заранее.','Отметить фактические перерывы в графике.'],
+  note:'Длительность и число перерывов: [[ask: из Корпоративной книги]].'},
+
+ {id:'mgr-quality', role:'manager', title:'Контроль качества и брака',
+  lead:'Как управляющий следит за качеством печати и съёмки.',
+  purpose:'Причины брака видны в цифрах, и их можно устранять.',
+  steps:['Просматривать журнал брака и считать повторяющиеся причины.','Разбирать случаи брака со старшим смены.','Решать, какие меры нужны: обучение, замена оборудования, смена процесса.','Фиксировать принятые меры.'],
+  note:'Как часто проверять журнал: [[ask: из Корпоративной книги]].'},
+ {id:'mgr-claims', role:'manager', title:'Работа с жалобами',
+  lead:'Что делать, если клиент недоволен.',
+  purpose:'Жалоба принята, записана и закрыта решением, о котором клиент узнал.',
+  steps:['Выслушать клиента и записать суть жалобы.','Выяснить, что произошло, у сотрудников смены.','Предложить решение: переделка, возврат или другое.','Сообщить клиенту решение и закрыть жалобу в журнале.'],
+  note:'Условия возврата и компенсаций: [[ask: из Корпоративной книги]].'},
+
+ {id:'office-orders', role:'office', title:'Заказы из офиса',
+  lead:'Как принять заказ в офисе и передать его на точку.',
+  purpose:'Заказ не теряется между офисом и точкой.',
+  steps:['Принять заявку и записать данные клиента.','Проверить состав заказа и сроки.','Передать заказ на точку и получить подтверждение.','Подтвердить клиенту, что заказ принят в работу.'],
+  note:'Форма передачи заказов: [[ask: из Корпоративной книги]].'},
+ {id:'office-reports', role:'office', title:'Документы и отчёты',
+  lead:'Сбор данных с точек и подготовка отчётов.',
+  purpose:'Управляющий и основатель получают одинаково собранные цифры.',
+  steps:['Собрать данные из журналов точек.','Свести их в единый отчёт.','Передать отчёт управляющему.','Сохранить копию в архив.'],
+  note:'Состав отчёта и сроки сдачи: [[ask: из Корпоративной книги]].'}
+];
+
+var QUICK = ['брак','перерывы','электронные фото','касса','жалобы'];
+var LS_EDITS = 'pl-demo-edits', SS_AUTH = 'pl-demo-auth', SS_ADMIN = 'pl-demo-admin';
+
+/* ---------- мелкие помощники ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function store(kind,key,val){try{var s=kind==='l'?localStorage:sessionStorage; if(val===undefined) return s.getItem(key); if(val===null) s.removeItem(key); else s.setItem(key,val);}catch(e){return null}}
+function roleOf(id){return ROLES.filter(function(r){return r.id===id})[0]}
+function docOf(id){return DOCS.filter(function(d){return d.id===id})[0]}
+function edits(){try{var o=JSON.parse(store('l',LS_EDITS)||'{}'); return (o&&typeof o==='object')?o:{}}catch(e){return {}}}
+function eff(d){var e=edits()[d.id]; if(!e||!Array.isArray(e.steps)||!e.steps.length) return d; return {id:d.id,role:d.role,title:e.title||d.title,lead:e.lead||d.lead,purpose:e.purpose||'',steps:e.steps,note:e.note||''}}
+function norm(s){return String(s).toLowerCase().replace(/ё/g,'е')}
+function colors(r){return 'style="--rc:var('+r.c+');--rt:var('+r.t+')"'}
+function askify(s){return esc(s).replace(/\[\[ask: ([^\]]+)\]\]/g,'<span class="ask">&lt;&lt;запросить у заказчика: $1&gt;&gt;</span>')}
+function plain(s){return String(s).replace(/\[\[ask: ([^\]]+)\]\]/g,'')}
+/* слово запроса сокращается на окончание: "бракованный" не найдёт "брак", но "жалобами" найдёт "жалобы" */
+function words(q){return norm(q).split(/\s+/).filter(function(w){return w.length>=2}).map(function(w){return w.length>=6?w.slice(0,-2):w})}
+function hl(text,ws){
+  var t=plain(text); if(!ws.length) return esc(t);
+  var re=new RegExp('('+ws.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/е/g,'[её]')}).join('|')+')','gi');
+  return t.split(re).map(function(p,i){return i%2? '<mark>'+esc(p)+'</mark>' : esc(p)}).join('');
+}
+function snippet(d,ws){
+  var parts=[d.lead,d.purpose].concat(d.steps).concat([d.note]);
+  for(var i=0;i<parts.length;i++){var p=norm(plain(parts[i])); if(ws.some(function(w){return p.indexOf(w)>-1})) return parts[i]}
+  return d.lead;
+}
+
+/* ---------- каркас ---------- */
+var app=document.getElementById('app');
+var ICON_LOGO='<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="none" stroke="#1b2231" stroke-width="2"/><path d="M15 2v26M2 15h26" stroke="#1b2231" stroke-width="2"/><circle cx="15" cy="15" r="4" fill="#d02c6b"/></svg>';
+var ICON_SEARCH='<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="#586174" stroke-width="2"/><path d="M13 13l5 5" stroke="#586174" stroke-width="2" stroke-linecap="round"/></svg>';
+
+function shell(content,q){
+  var admin=store('s',SS_ADMIN)==='1';
+  return ''+
+  '<div class="demo">Демо. Тексты регламентов - примеры, настоящие будут из вашей Корпоративной книги.</div>'+
+  '<header class="top"><div class="top-in">'+
+    '<a class="logo" href="#/">'+ICON_LOGO+'PHOTO LAB</a>'+
+    '<form class="search" role="search" id="sform"><label class="sr" for="q">Поиск по регламентам</label>'+ICON_SEARCH+
+      '<input id="q" type="search" autocomplete="off" placeholder="Поиск: например, брак" value="'+esc(q||'')+'"></form>'+
+  '</div></header>'+
+  '<main id="main" tabindex="-1">'+content+'</main>'+
+  '<footer><div class="foot-tools"><a href="#/about">Как будет в боевой версии</a><button class="adm" id="admBtn" type="button" aria-pressed="'+admin+'">Режим администратора (демо)</button><button class="adm out" id="outBtn" type="button">Выйти</button></div>Демонстрационный макет, не является официальным сайтом организации.</footer>';
+}
+
+function gate(){
+  app.innerHTML='<div class="gate"><form class="gate-card" id="gform">'+ICON_LOGO+
+   '<h1>Справочник для сотрудников</h1><p>Регламенты PHOTO LAB по ролям. Войдите, чтобы читать.</p>'+
+   '<label for="pw">Пароль</label><input id="pw" type="password" autocomplete="current-password" placeholder="Введите пароль">'+
+   '<button class="btn pri" type="submit">Войти</button>'+
+   '<p class="hint">Демо: подойдёт любой пароль. В боевой версии вход будет по общему паролю или по личной ссылке <span class="ask">&lt;&lt;запросить у заказчика: какой способ нужен&gt;&gt;</span>.</p>'+
+   '</form></div>';
+  var f=document.getElementById('gform'), pw=document.getElementById('pw');
+  f.addEventListener('submit',function(e){e.preventDefault(); if(!pw.value.trim()){pw.focus();return} store('s',SS_AUTH,'1'); route();});
+  pw.focus();
+}
+
+/* ---------- страницы ---------- */
+function pageHome(){
+  var tiles=ROLES.map(function(r){
+    var n=DOCS.filter(function(d){return d.role===r.id}).length;
+    return '<a class="role" href="#/r/'+r.id+'" '+colors(r)+'><h2>'+esc(r.name)+'</h2><p>'+esc(r.about)+'</p><span class="n">Разделов: '+n+'</span></a>';
+  }).join('');
+  var chips=QUICK.map(function(w){return '<button class="chip" type="button" data-q="'+esc(w)+'">'+esc(w)+'</button>'}).join('');
+  return '<section class="hero"><h1>Регламенты по ролям</h1><p>Выберите свою роль или найдите нужное правило по слову. Работает с телефона.</p>'+
+    '<div class="quick"><span>Примеры запросов:</span>'+chips+'</div></section>'+
+    '<h2 class="sr">Роли</h2><div class="roles">'+tiles+'</div>'+
+    '<p class="note-home">Названия ролей взяты из вашей Корпоративной книги. Состав и порядок разделов определим по её оглавлению <span class="ask">&lt;&lt;запросить у заказчика: Корпоративная книга&gt;&gt;</span>.</p>';
+}
+
+function pageRole(id){
+  var r=roleOf(id); if(!r) return pageHome();
+  var list=DOCS.filter(function(d){return d.role===id}).map(function(d){
+    return '<a class="doc" href="#/d/'+d.id+'" '+colors(r)+'><h3>'+esc(d.title)+'</h3><p>'+esc(d.lead)+'</p></a>';
+  }).join('');
+  return '<p class="crumbs"><a href="#/">Все роли</a> / '+esc(r.name)+'</p>'+
+    '<span class="pill" '+colors(r)+'><i></i>'+esc(r.name)+'</span>'+
+    '<h1 class="page-h">Разделы для роли «'+esc(r.name)+'»</h1><p class="lead">'+esc(r.about)+'.</p><div class="docs">'+list+'</div>';
+}
+
+function pageDoc(id,editing){
+  var base=docOf(id); if(!base) return pageHome();
+  var d=eff(base), r=roleOf(d.role), admin=store('s',SS_ADMIN)==='1';
+  var sib=DOCS.filter(function(x){return x.role===d.role}), i=sib.indexOf(base);
+  var prev=sib[i-1], next=sib[i+1];
+  var head='<p class="crumbs"><a href="#/">Все роли</a> / <a href="#/r/'+r.id+'">'+esc(r.name)+'</a> / '+esc(d.title)+'</p>'+
+    '<span class="pill" '+colors(r)+'><i></i>'+esc(r.name)+'</span><h1 class="page-h">'+esc(d.title)+'</h1><p class="lead">'+esc(d.lead)+'</p>';
+  var body;
+  if(editing){
+    body='<form class="editor" id="eform"><div class="banner">Режим редактирования (демо). Правки сохраняются только в этом браузере. В боевой версии они сохраняются для всех сотрудников.</div>'+
+      '<label for="e0">Название регламента</label><textarea id="e0" rows="1">'+esc(d.title)+'</textarea>'+
+      '<label for="e00">Короткое описание</label><textarea id="e00" rows="2">'+esc(d.lead)+'</textarea>'+
+      '<label for="e1">Для чего нужен регламент</label><textarea id="e1">'+esc(d.purpose)+'</textarea>'+
+      '<label for="e2">Порядок действий</label><textarea id="e2" rows="6">'+esc(d.steps.join('\n'))+'</textarea><small>Один шаг - одна строка.</small>'+
+      '<label for="e3">Важно</label><textarea id="e3">'+esc(d.note)+'</textarea>'+
+      '<div class="nav2"><button class="btn pri" type="submit">Сохранить</button><button class="btn" type="button" id="ecancel">Отмена</button></div></form>';
+  } else {
+    var tools=admin?'<div class="editbar"><button class="btn pri" id="editBtn" type="button">Редактировать текст</button>'+(edits()[d.id]?'<button class="btn" id="resetBtn" type="button">Вернуть исходный текст</button>':'')+'</div>':'';
+    body=tools+
+      '<h2 id="s2">Порядок действий</h2><ol class="steps">'+d.steps.map(function(s){return '<li>'+askify(s)+'</li>'}).join('')+'</ol>'+
+      (d.note?'<div class="callout"><b>Не забыть.</b> '+askify(d.note)+'</div>':'')+
+      (d.purpose?'<h2 id="s1">Для чего нужен регламент</h2><p>'+askify(d.purpose)+'</p>':'')+
+      '<div class="nav2"><div>'+(prev?'<a class="btn" href="#/d/'+prev.id+'">← '+esc(prev.title)+'</a>':'')+'</div><div>'+(next?'<a class="btn pri" href="#/d/'+next.id+'">'+esc(next.title)+' →</a>':'<a class="btn" href="#/r/'+r.id+'">К разделам роли</a>')+'</div></div>';
+  }
+  return '<div class="role-'+r.id+'" '+colors(r)+'>'+head+'<article>'+body+'</article></div>';
+}
+
+function pageSearch(q){
+  var ws=words(q);
+  var found=ws.length?DOCS.map(eff).map(function(d){
+    d._all=norm(d.title+' '+d.lead+' '+d.purpose+' '+d.steps.join(' ')+' '+d.note).replace(/\[\[ask: [^\]]+\]\]/g,'');
+    return d;
+  }).filter(function(d){return ws.every(function(w){return d._all.indexOf(w)>-1})}):[];
+  var out='<h1 class="page-h">Результаты поиска</h1><p class="lead" aria-live="polite">'+(ws.length?('По запросу «'+esc(q)+'» найдено: '+found.length+'.'):'Введите слово, чтобы найти правило.')+'</p>';
+  if(!found.length && ws.length){
+    out+='<div class="empty"><b>Ничего не найдено.</b><p>Попробуйте другое слово или его начало, например «брак» или «перерыв». Или откройте роль на <a href="#/">главной</a>.</p></div>';
+  } else {
+    out+='<div class="res">'+found.map(function(d){
+      var r=roleOf(d.role);
+      return '<a class="doc" href="#/d/'+d.id+'" '+colors(r)+'><span class="pill"><i></i>'+esc(r.name)+'</span><h3 style="margin-top:8px">'+hl(d.title,ws)+'</h3><p>'+hl(snippet(d,ws),ws)+'</p></a>';
+    }).join('')+'</div>';
+  }
+  return out;
+}
+
+function pageAbout(){
+  var A='<span class="ask">&lt;&lt;запросить у заказчика: какой вариант подходит&gt;&gt;</span>';
+  return '<div class="about"><p class="crumbs"><a href="#/">Все роли</a> / Как будет в боевой версии</p>'+
+   '<h1 class="page-h">Как это будет в боевой версии</h1>'+
+   '<p class="lead">В демо вы видите структуру, поиск и чтение с телефона. Вход и правка текста здесь смоделированы, и вот как они будут работать по-настоящему.</p>'+
+   '<h2>Что в демо и что будет на самом деле</h2>'+
+   '<table><thead><tr><th>Что просит заказчик</th><th>В этом демо</th><th>В боевой версии</th></tr></thead><tbody>'+
+   '<tr><td>Закрытый доступ</td><td>Подходит любой пароль, проверки нет</td><td>Настоящий пароль или личные ссылки. Сменить пароль или отозвать доступ уволенного сотрудника можно без программиста</td></tr>'+
+   '<tr><td>Админ сам правит текст</td><td>Правки сохраняются только в вашем браузере, три поля</td><td>Правки сохраняются для всех сотрудников. Админ может добавить, переименовать и удалить регламент и раздел</td></tr>'+
+   '<tr><td>Поиск</td><td>По началу слова, по примерам разделов</td><td>Тот же поиск по всей Корпоративной книге</td></tr>'+
+   '<tr><td>Чтение с телефона</td><td>Работает уже сейчас</td><td>Так же, проверим на ваших телефонах в зале</td></tr>'+
+   '</tbody></table>'+
+   '<h2>Два способа сделать это по-настоящему</h2>'+
+   '<ul><li><b>Вариант 1. Сайт на Тильде.</b> Пароль на весь сайт, правки в привычном редакторе Тильды, поиск по сайту. Проще и быстрее, подходит, если разделы правит один-два человека. Наличие парольной защиты и поиска зависит от тарифа Тильды, тариф уточним до начала работы.</li>'+
+   '<li><b>Вариант 2. Свой хостинг с админкой.</b> Личные доступы сотрудников, история изменений и откат, права админов. Дороже и дольше, оправдан при большом числе сотрудников и частых правках.</li></ul>'+
+   '<p>Какой вариант вам ближе: '+A+'.</p>'+
+   '<h2>Что нужно от вас</h2><ul><li>Корпоративная книга (PDF или текст) '+'<span class="ask">&lt;&lt;запросить у заказчика&gt;&gt;</span>.</li><li>Кто будет админом и сколько их.</li><li>Сколько сотрудников и как раздавать пароль.</li></ul></div>';
+}
+
+/* ---------- маршрутизация ---------- */
+var editingDoc=null, lastQ='';
+function route(){
+  if(store('s',SS_AUTH)!=='1'){gate();return}
+  var h=location.hash.replace(/^#\/?/,''), parts=h.split('/'), kind=parts[0], arg='';
+  try{arg=decodeURIComponent(parts.slice(1).join('/')||'')}catch(e){arg=''}
+  var q=kind==='s'?arg:'', html;
+  if(kind==='r') html=pageRole(arg);
+  else if(kind==='d') html=pageDoc(arg,editingDoc===arg);
+  else if(kind==='s') html=pageSearch(arg);
+  else if(kind==='about') html=pageAbout();
+  else html=pageHome();
+  var cur=document.getElementById('q'), keep=!!cur&&document.activeElement===cur&&kind==='s';
+  if(keep) q=cur.value;
+  app.innerHTML=shell(html,q);
+  bind();
+  if(keep){var el=document.getElementById('q');el.focus();el.setSelectionRange(el.value.length,el.value.length)}
+  else{window.scrollTo(0,0);var m=document.getElementById('main');if(m)m.focus({preventScroll:true})}
+}
+
+function bind(){
+  var q=document.getElementById('q'), t;
+  document.getElementById('sform').addEventListener('submit',function(e){e.preventDefault();clearTimeout(t);go(q.value)});
+  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(function(){go(q.value)},250)});
+  function go(v){v=v.trim(); var target=v?'#/s/'+encodeURIComponent(v):'#/'; if(location.hash!==target) location.hash=target;}
+  document.getElementById('admBtn').addEventListener('click',function(){store('s',SS_ADMIN,store('s',SS_ADMIN)==='1'?null:'1');editingDoc=null;route()});
+  document.getElementById('outBtn').addEventListener('click',function(){store('s',SS_AUTH,null);store('s',SS_ADMIN,null);location.hash='#/';route()});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-q]'),function(b){b.addEventListener('click',function(){location.hash='#/s/'+encodeURIComponent(b.getAttribute('data-q'))})});
+  var id=(location.hash.match(/^#\/d\/(.+)$/)||[])[1];
+  var eb=document.getElementById('editBtn'); if(eb) eb.addEventListener('click',function(){editingDoc=id;route()});
+  var rb=document.getElementById('resetBtn'); if(rb) rb.addEventListener('click',function(){var e=edits();delete e[id];store('l',LS_EDITS,JSON.stringify(e));route()});
+  var ec=document.getElementById('ecancel'); if(ec) ec.addEventListener('click',function(){editingDoc=null;route()});
+  var ef=document.getElementById('eform'); if(ef) ef.addEventListener('submit',function(e){e.preventDefault();
+    var steps=document.getElementById('e2').value.split('\n').map(function(s){return s.trim()}).filter(Boolean);
+    var ttl=document.getElementById('e0').value.trim();
+    if(!ttl){document.getElementById('e0').focus();return}
+    if(!steps.length){document.getElementById('e2').focus();return}
+    var all=edits(); all[id]={title:ttl,lead:document.getElementById('e00').value.trim(),purpose:document.getElementById('e1').value.trim(),steps:steps,note:document.getElementById('e3').value.trim()};
+    store('l',LS_EDITS,JSON.stringify(all));
+    if(store('l',LS_EDITS)===null){alert('Браузер не даёт сохранить правки (приватный режим или запрет). В демо правка не сохранится.')}
+    editingDoc=null; route();});
+  var sk=document.getElementById('skip'); if(sk) sk.addEventListener('click',function(e){e.preventDefault();var m=document.getElementById('main');if(m){m.focus();m.scrollIntoView()}});
+}
+
+window.addEventListener('hashchange',function(){editingDoc=null;route()});
+route();
+</script>
+</body>
+</html>
