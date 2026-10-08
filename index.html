@@ -34,7 +34,7 @@
   .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:10}
   .skip:focus{left:8px}
 
-  .demo{background:#1b2231;color:#dfe5f3;font-size:14px;line-height:1.4;padding:8px 16px;text-align:center}
+  .demo{background:#1b2231;color:#dfe5f3;font-size:15px;line-height:1.4;padding:8px 16px;text-align:center}
   header.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .top-in{max-width:1120px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .logo{display:flex;align-items:center;gap:10px;font:700 21px/1 var(--head);color:var(--ink);text-decoration:none;letter-spacing:.01em}
@@ -43,19 +43,27 @@
   .search input{width:100%;font:400 18px var(--text);padding:11px 14px 11px 44px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink)}
   .search input:focus{border-color:var(--brand);background:#fff}
   .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none}
-  .adm{font:600 14px var(--head);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--ink);cursor:pointer;min-height:44px}
+  .adm{font:600 15px var(--head);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--ink);cursor:pointer;min-height:44px}
   .adm[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
   .adm.out{border-style:dashed;color:var(--muted)}
 
   main:focus{outline:none}
+  .about-link{margin:16px 0 0}
+  .meta{font-size:16px;color:var(--muted);margin:18px 0 0}
+  .owner{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;margin:6px 0 0}
+  .banner.ok{background:#e8f3ff;border-color:#b5d2f5}
+  ul.wrong{margin:0;padding-left:22px}
+  ul.wrong li{margin-bottom:8px}
+  .about ol{padding-left:22px}
+  .about ol li{margin-bottom:6px}
   .foot-tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-  .foot-tools a{font-size:15px}
+  .foot-tools a{font-size:16px}
   .about h2{font-size:24px;margin:30px 0 10px}
   .about table{border-collapse:collapse;width:100%;font-size:16px;background:#fff;border-radius:12px;overflow:hidden}
   .about th,.about td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
   .about th{background:#eef1f8;font-family:var(--head);font-size:15px}
   .about ul{padding-left:22px}
-  @media(max-width:600px){.nav2{flex-direction:column}.nav2>div,.nav2 .btn{width:100%;text-align:center}.demo{font-size:13px;padding:6px 12px}.top-in{padding:10px 16px;gap:10px}.logo{font-size:19px}}
+  @media(max-width:600px){.nav2{flex-direction:column}.nav2>div,.nav2 .btn{width:100%;text-align:center}.demo{font-size:14px;padding:6px 12px}.top-in{padding:10px 16px;gap:10px}.logo{font-size:19px}}
   main{max-width:1120px;margin:0 auto;padding:28px 16px 56px}
 
   /* главная */
@@ -63,7 +71,7 @@
   .hero h1{font-size:clamp(30px,5vw,44px);font-weight:700}
   .hero p{margin:12px 0 0;font-size:19px;color:var(--muted);max-width:56ch}
   .quick{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;align-items:center}
-  .quick span{font-size:15px;color:var(--muted)}
+  .quick span{font-size:16px;color:var(--muted)}
   .chip{font:400 16px var(--text);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;color:var(--ink);min-height:40px}
   .chip:hover{border-color:var(--brand)}
   .roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
@@ -74,13 +82,13 @@
   .role:hover{border-color:var(--rc);box-shadow:0 6px 18px rgba(27,34,49,.08)}
   .role h2{font-size:24px}
   .role p{margin:6px 0 0;color:var(--muted);font-size:16px;line-height:1.4}
-  .role .n{display:inline-block;margin-top:12px;font:600 14px var(--head);background:var(--rt);padding:4px 10px;border-radius:8px}
+  .role .n{display:inline-block;margin-top:12px;font:600 15px var(--head);background:var(--rt);padding:4px 10px;border-radius:8px}
   .note-home{margin-top:30px;max-width:70ch;font-size:16px;color:var(--muted)}
 
   /* общие элементы страницы раздела */
-  .crumbs{font-size:15px;margin:0 0 14px;color:var(--muted)}
+  .crumbs{font-size:16px;margin:0 0 14px;color:var(--muted)}
   .crumbs a{color:var(--muted)}
-  .pill{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--head);background:var(--rt);padding:5px 12px 5px 10px;border-radius:999px;color:var(--ink)}
+  .pill{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--head);background:var(--rt);padding:5px 12px 5px 10px;border-radius:999px;color:var(--ink)}
   .pill i{width:10px;height:10px;border-radius:50%;background:var(--rc);display:block}
   .page-h{font-size:clamp(28px,4.5vw,40px);margin:12px 0 8px}
   .lead{font-size:20px;color:var(--muted);max-width:60ch;margin:0 0 24px}
@@ -133,9 +141,9 @@
   .gate-card label{font:600 15px var(--head);display:block;margin-bottom:6px}
   .gate-card input{width:100%;font:400 19px var(--text);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;margin-bottom:14px}
   .gate-card .btn{width:100%;text-align:center}
-  .gate-card .hint{font-size:14.5px;margin:14px 0 0;color:var(--muted)}
+  .gate-card .hint{font-size:16px;margin:14px 0 0;color:var(--muted)}
 
-  footer{border-top:1px solid var(--line);padding:22px 16px 34px;text-align:center;color:var(--muted);font-size:14.5px}
+  footer{border-top:1px solid var(--line);padding:22px 16px 34px;text-align:center;color:var(--muted);font-size:16px}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -176,11 +184,14 @@ var DOCS = [
   purpose:'Ошибку в файле дешевле найти до печати, чем после.',
   steps:['Сверить номер заказа, формат и количество.','Проверить файл: разрешение, обрезка по краям, цвет.','Поставить заказ в очередь печати.','Отметить в журнале, что заказ принят.'],
   note:'Минимальное разрешение файла: [[ask: из Корпоративной книги]].'},
- {id:'print-defect', role:'print', title:'Что делать при браке',
+ {id:'print-defect', role:'print', title:'Что делать при браке', example:true,
   lead:'Порядок действий, если отпечаток вышел с дефектом.',
   purpose:'Каждый брак записан и разобран, чтобы причина не повторялась.',
-  steps:['Остановить печать и сохранить файл заказа.','Показать отпечаток старшему смены.','Записать причину в журнал брака.','Перепечатать после решения старшего смены.'],
-  note:'Бракованный отпечаток не выбрасывать, пока он не записан в журнал.'},
+  steps:['Остановить печать и сохранить файл заказа, чтобы его можно было сравнить с отпечатком.','Показать отпечаток старшему смены и вместе понять, что не так: цвет, обрезка, пятна или дефект бумаги. Что считается браком: [[ask: из Корпоративной книги]].','Записать в журнал брака: номер заказа, что не так, возможную причину и время.','Перепечатать после решения старшего смены и проверить новый отпечаток до выдачи.','Если заказ задерживается, сообщить продажнику, чтобы он предупредил клиента.'],
+  note:'Бракованный отпечаток не выбрасывать, пока он не записан в журнал.',
+  owner:'Печатник выполняет, старший смены принимает решение о перепечатке.',
+  wrong:['Брак повторяется на нескольких заказах подряд: остановить печать и сообщить управляющему.','Бракованный заказ уже выдан клиенту: передать обращение управляющему, дальше по разделу «Работа с жалобами».'],
+  meta:'Версия и дата регламента: [[ask: из Корпоративной книги]]. Ответственный за актуальность: [[ask: из Корпоративной книги]].'},
 
  {id:'sales-cash', role:'sales', title:'Касса и оплата',
   lead:'Приём заказа и оплаты от клиента.',
@@ -236,7 +247,8 @@ function store(kind,key,val){try{var s=kind==='l'?localStorage:sessionStorage; i
 function roleOf(id){return ROLES.filter(function(r){return r.id===id})[0]}
 function docOf(id){return DOCS.filter(function(d){return d.id===id})[0]}
 function edits(){try{var o=JSON.parse(store('l',LS_EDITS)||'{}'); return (o&&typeof o==='object')?o:{}}catch(e){return {}}}
-function eff(d){var e=edits()[d.id]; if(!e||!Array.isArray(e.steps)||!e.steps.length) return d; return {id:d.id,role:d.role,title:e.title||d.title,lead:e.lead||d.lead,purpose:e.purpose||'',steps:e.steps,note:e.note||''}}
+function eff(d){var e=edits()[d.id]; if(!e||!Array.isArray(e.steps)||!e.steps.length) return d; return {id:d.id,role:d.role,title:e.title||d.title,lead:e.lead||d.lead,purpose:e.purpose||'',steps:e.steps,note:e.note||'',owner:d.owner,wrong:d.wrong,meta:d.meta,example:d.example}}
+function notFound(){return '<div class="empty"><b>Такого раздела нет.</b><p>Возможно, ссылка устарела. Вернитесь на <a href="#/">главную</a> и выберите роль.</p></div>'}
 function norm(s){return String(s).toLowerCase().replace(/ё/g,'е')}
 function colors(r){return 'style="--rc:var('+r.c+');--rt:var('+r.t+')"'}
 function askify(s){return esc(s).replace(/\[\[ask: ([^\]]+)\]\]/g,'<span class="ask">&lt;&lt;запросить у заказчика: $1&gt;&gt;</span>')}
@@ -262,25 +274,25 @@ var ICON_SEARCH='<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="tr
 function shell(content,q){
   var admin=store('s',SS_ADMIN)==='1';
   return ''+
-  '<div class="demo">Демо. Тексты регламентов - примеры, настоящие будут из вашей Корпоративной книги.</div>'+
+  '<div class="demo">Демо: тексты - примеры, настоящие будут из вашей Корпоративной книги. Жёлтое - нужно от вас.</div>'+
   '<header class="top"><div class="top-in">'+
     '<a class="logo" href="#/">'+ICON_LOGO+'PHOTO LAB</a>'+
     '<form class="search" role="search" id="sform"><label class="sr" for="q">Поиск по регламентам</label>'+ICON_SEARCH+
       '<input id="q" type="search" autocomplete="off" placeholder="Поиск: например, брак" value="'+esc(q||'')+'"></form>'+
   '</div></header>'+
   '<main id="main" tabindex="-1">'+content+'</main>'+
-  '<footer><div class="foot-tools"><a href="#/about">Как будет в боевой версии</a><button class="adm" id="admBtn" type="button" aria-pressed="'+admin+'">Режим администратора (демо)</button><button class="adm out" id="outBtn" type="button">Выйти</button></div>Демонстрационный макет, не является официальным сайтом организации.</footer>';
+  '<footer><div class="foot-tools"><a href="#/about">Как будет в боевой версии</a><button class="adm" id="admBtn" type="button" aria-pressed="'+admin+'">Попробовать правку текста (демо)</button><button class="adm out" id="outBtn" type="button">Выйти</button></div>Демонстрационный макет, не является официальным сайтом организации.</footer>';
 }
 
 function gate(){
   app.innerHTML='<div class="gate"><form class="gate-card" id="gform">'+ICON_LOGO+
    '<h1>Справочник для сотрудников</h1><p>Регламенты PHOTO LAB по ролям. Войдите, чтобы читать.</p>'+
    '<label for="pw">Пароль</label><input id="pw" type="password" autocomplete="current-password" placeholder="Введите пароль">'+
-   '<button class="btn pri" type="submit">Войти</button>'+
-   '<p class="hint">Демо: подойдёт любой пароль. В боевой версии вход будет по общему паролю или по личной ссылке <span class="ask">&lt;&lt;запросить у заказчика: какой способ нужен&gt;&gt;</span>.</p>'+
+   '<p id="gmsg" role="alert" style="color:#b3261e;font-size:16px;margin:0 0 10px"></p><button class="btn pri" type="submit">Войти</button>'+
+   '<p class="hint">Демо: подойдёт любой пароль. В боевой версии вход будет по общему паролю или по личной ссылке <span class="ask">&lt;&lt;запросить у заказчика: какой способ нужен&gt;&gt;</span>. <a href="#/about">Как это будет на самом деле</a>.</p>'+
    '</form></div>';
   var f=document.getElementById('gform'), pw=document.getElementById('pw');
-  f.addEventListener('submit',function(e){e.preventDefault(); if(!pw.value.trim()){pw.focus();return} store('s',SS_AUTH,'1'); route();});
+  f.addEventListener('submit',function(e){e.preventDefault(); if(!pw.value.trim()){pw.focus();return} store('s',SS_AUTH,'1'); if(store('s',SS_AUTH)!=='1'){var m=document.getElementById('gmsg'); m.textContent='Браузер не даёт сохранить вход (приватный режим или запрет). Откройте страницу в обычном окне.'; return} route();});
   pw.focus();
 }
 
@@ -292,14 +304,15 @@ function pageHome(){
   }).join('');
   var chips=QUICK.map(function(w){return '<button class="chip" type="button" data-q="'+esc(w)+'">'+esc(w)+'</button>'}).join('');
   return '<section class="hero"><h1>Регламенты по ролям</h1><p>Выберите свою роль или найдите нужное правило по слову. Работает с телефона.</p>'+
-    '<div class="quick"><span>Примеры запросов:</span>'+chips+'</div></section>'+
+    '<div class="quick"><span>Примеры запросов:</span>'+chips+'</div>'+
+    '<p class="about-link"><a class="btn" href="#/about">Как будут работать вход и правка в боевой версии</a></p></section>'+
     '<h2 class="sr">Роли</h2><div class="roles">'+tiles+'</div>'+
     '<p class="note-home">Названия ролей взяты из вашей Корпоративной книги. Состав и порядок разделов определим по её оглавлению <span class="ask">&lt;&lt;запросить у заказчика: Корпоративная книга&gt;&gt;</span>.</p>';
 }
 
 function pageRole(id){
-  var r=roleOf(id); if(!r) return pageHome();
-  var list=DOCS.filter(function(d){return d.role===id}).map(function(d){
+  var r=roleOf(id); if(!r) return notFound();
+  var list=DOCS.filter(function(d){return d.role===id}).map(eff).map(function(d){
     return '<a class="doc" href="#/d/'+d.id+'" '+colors(r)+'><h3>'+esc(d.title)+'</h3><p>'+esc(d.lead)+'</p></a>';
   }).join('');
   return '<p class="crumbs"><a href="#/">Все роли</a> / '+esc(r.name)+'</p>'+
@@ -308,10 +321,10 @@ function pageRole(id){
 }
 
 function pageDoc(id,editing){
-  var base=docOf(id); if(!base) return pageHome();
+  var base=docOf(id); if(!base) return notFound();
   var d=eff(base), r=roleOf(d.role), admin=store('s',SS_ADMIN)==='1';
   var sib=DOCS.filter(function(x){return x.role===d.role}), i=sib.indexOf(base);
-  var prev=sib[i-1], next=sib[i+1];
+  var prev=sib[i-1]&&eff(sib[i-1]), next=sib[i+1]&&eff(sib[i+1]);
   var head='<p class="crumbs"><a href="#/">Все роли</a> / <a href="#/r/'+r.id+'">'+esc(r.name)+'</a> / '+esc(d.title)+'</p>'+
     '<span class="pill" '+colors(r)+'><i></i>'+esc(r.name)+'</span><h1 class="page-h">'+esc(d.title)+'</h1><p class="lead">'+esc(d.lead)+'</p>';
   var body;
@@ -325,10 +338,13 @@ function pageDoc(id,editing){
       '<div class="nav2"><button class="btn pri" type="submit">Сохранить</button><button class="btn" type="button" id="ecancel">Отмена</button></div></form>';
   } else {
     var tools=admin?'<div class="editbar"><button class="btn pri" id="editBtn" type="button">Редактировать текст</button>'+(edits()[d.id]?'<button class="btn" id="resetBtn" type="button">Вернуть исходный текст</button>':'')+'</div>':'';
-    body=tools+
+    body=tools+(d.example?'<div class="banner ok">Образец подробного регламента: так будет выглядеть каждый раздел после переноса Корпоративной книги. Правила и цифры будут из вашей книги, а не мои.</div>':'')+
       '<h2 id="s2">Порядок действий</h2><ol class="steps">'+d.steps.map(function(s){return '<li>'+askify(s)+'</li>'}).join('')+'</ol>'+
       (d.note?'<div class="callout"><b>Не забыть.</b> '+askify(d.note)+'</div>':'')+
+      (d.owner?'<h2>Кто отвечает</h2><p class="owner">'+askify(d.owner)+'</p>':'')+
+      (d.wrong?'<h2>Если что-то пошло не так</h2><ul class="wrong">'+d.wrong.map(function(s){return '<li>'+askify(s)+'</li>'}).join('')+'</ul>':'')+
       (d.purpose?'<h2 id="s1">Для чего нужен регламент</h2><p>'+askify(d.purpose)+'</p>':'')+
+      (d.meta?'<p class="meta">'+askify(d.meta)+'</p>':'')+
       '<div class="nav2"><div>'+(prev?'<a class="btn" href="#/d/'+prev.id+'">← '+esc(prev.title)+'</a>':'')+'</div><div>'+(next?'<a class="btn pri" href="#/d/'+next.id+'">'+esc(next.title)+' →</a>':'<a class="btn" href="#/r/'+r.id+'">К разделам роли</a>')+'</div></div>';
   }
   return '<div class="role-'+r.id+'" '+colors(r)+'>'+head+'<article>'+body+'</article></div>';
@@ -353,28 +369,28 @@ function pageSearch(q){
 }
 
 function pageAbout(){
-  var A='<span class="ask">&lt;&lt;запросить у заказчика: какой вариант подходит&gt;&gt;</span>';
+  var ASK='<span class="ask">&lt;&lt;запросить у заказчика&gt;&gt;</span>';
   return '<div class="about"><p class="crumbs"><a href="#/">Все роли</a> / Как будет в боевой версии</p>'+
    '<h1 class="page-h">Как это будет в боевой версии</h1>'+
-   '<p class="lead">В демо вы видите структуру, поиск и чтение с телефона. Вход и правка текста здесь смоделированы, и вот как они будут работать по-настоящему.</p>'+
+   '<p class="lead">В демо вы видите структуру, поиск и чтение с телефона. Вход и правка текста здесь показывают принцип, а вот как они будут работать по-настоящему.</p>'+
    '<h2>Что в демо и что будет на самом деле</h2>'+
-   '<table><thead><tr><th>Что просит заказчик</th><th>В этом демо</th><th>В боевой версии</th></tr></thead><tbody>'+
-   '<tr><td>Закрытый доступ</td><td>Подходит любой пароль, проверки нет</td><td>Настоящий пароль или личные ссылки. Сменить пароль или отозвать доступ уволенного сотрудника можно без программиста</td></tr>'+
-   '<tr><td>Админ сам правит текст</td><td>Правки сохраняются только в вашем браузере, три поля</td><td>Правки сохраняются для всех сотрудников. Админ может добавить, переименовать и удалить регламент и раздел</td></tr>'+
-   '<tr><td>Поиск</td><td>По началу слова, по примерам разделов</td><td>Тот же поиск по всей Корпоративной книге</td></tr>'+
-   '<tr><td>Чтение с телефона</td><td>Работает уже сейчас</td><td>Так же, проверим на ваших телефонах в зале</td></tr>'+
+   '<table><thead><tr><th>Что просит заказчик</th><th>В этом демо</th><th>Вариант 1: Тильда</th><th>Вариант 2: свой хостинг</th></tr></thead><tbody>'+
+   '<tr><td>Закрытый доступ</td><td>Подходит любой пароль, проверки нет</td><td>Один пароль на весь сайт. Сменить его можно в настройках. Наличие парольной защиты на вашем тарифе уточним до начала работы</td><td>Личные доступы сотрудников. Уволенного сотрудника отключают отдельно, остальные работают как раньше</td></tr>'+
+   '<tr><td>Админ сам правит текст</td><td>Правки сохраняются только в вашем браузере, поля ограничены</td><td>Админ правит страницы в привычном редакторе Тильды, добавляет и удаляет разделы</td><td>Админка с добавлением и удалением разделов, историей изменений и откатом</td></tr>'+
+   '<tr><td>Поиск по словам</td><td>По началу слова, по примерам разделов</td><td>Поиск по сайту средствами Тильды, возможности уточним до начала работы</td><td>Поиск по всей Корпоративной книге, как в демо</td></tr>'+
+   '<tr><td>Чтение с телефона</td><td>Работает уже сейчас</td><td>Работает</td><td>Работает</td></tr>'+
    '</tbody></table>'+
-   '<h2>Два способа сделать это по-настоящему</h2>'+
-   '<ul><li><b>Вариант 1. Сайт на Тильде.</b> Пароль на весь сайт, правки в привычном редакторе Тильды, поиск по сайту. Проще и быстрее, подходит, если разделы правит один-два человека. Наличие парольной защиты и поиска зависит от тарифа Тильды, тариф уточним до начала работы.</li>'+
-   '<li><b>Вариант 2. Свой хостинг с админкой.</b> Личные доступы сотрудников, история изменений и откат, права админов. Дороже и дольше, оправдан при большом числе сотрудников и частых правках.</li></ul>'+
-   '<p>Какой вариант вам ближе: '+A+'.</p>'+
-   '<h2>Что нужно от вас</h2><ul><li>Корпоративная книга (PDF или текст) '+'<span class="ask">&lt;&lt;запросить у заказчика&gt;&gt;</span>.</li><li>Кто будет админом и сколько их.</li><li>Сколько сотрудников и как раздавать пароль.</li></ul></div>';
+   '<p>Какой вариант вам ближе: <span class="ask">&lt;&lt;запросить у заказчика: Тильда или свой хостинг&gt;&gt;</span>. Выбор зависит от числа сотрудников и от того, сколько человек будет править разделы. Тарифы Тильды, хостинг и домен оплачиваются отдельно, если они понадобятся.</p>'+
+   '<h2>Как пойдёт работа</h2>'+
+   '<ol><li>Вы присылаете Корпоративную книгу '+ASK+' и выбираете вариант.</li><li>Я собираю один раздел целиком, вы смотрите и говорите, что поменять.</li><li>Переношу остальную книгу, вы проверяете.</li><li>Проверяем на ваших телефонах в зале и передаём сайт.</li></ol>'+
+   '<p>Стоимость, сроки и порядок оплаты - в моём отклике на Kwork.</p>'+
+   '<h2>Что нужно от вас</h2><ul><li>Корпоративная книга (PDF или текст) '+ASK+'.</li><li>Кто будет админом и сколько их.</li><li>Сколько сотрудников и как раздавать пароль.</li></ul></div>';
 }
-
 /* ---------- маршрутизация ---------- */
 var editingDoc=null, lastQ='';
 function route(){
-  if(store('s',SS_AUTH)!=='1'){gate();return}
+  var h0=location.hash.replace(/^#\/?/,'').split('/')[0];
+  if(store('s',SS_AUTH)!=='1'&&h0!=='about'){gate();return}
   var h=location.hash.replace(/^#\/?/,''), parts=h.split('/'), kind=parts[0], arg='';
   try{arg=decodeURIComponent(parts.slice(1).join('/')||'')}catch(e){arg=''}
   var q=kind==='s'?arg:'', html;
@@ -383,7 +399,7 @@ function route(){
   else if(kind==='s') html=pageSearch(arg);
   else if(kind==='about') html=pageAbout();
   else html=pageHome();
-  var cur=document.getElementById('q'), keep=!!cur&&document.activeElement===cur&&kind==='s';
+  var cur=document.getElementById('q'), keep=!!cur&&document.activeElement===cur;
   if(keep) q=cur.value;
   app.innerHTML=shell(html,q);
   bind();
